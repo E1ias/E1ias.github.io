@@ -182,7 +182,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/clustering/">clustering</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/clustering/">clustering</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spark/">spark</a></li></ul>
                     </div>
                 </section>
                 
@@ -254,6 +254,71 @@
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-spark-1" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/12/09/spark-1/" class="article-date">
+      <time datetime="2016-12-09T12:36:31.000Z" itemprop="datePublished">2016-12-09</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/09/spark-1/">spark(1)</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>spark的基本概念<br>  ● RDD：是弹性分布式数据集（Resilient Distributed Dataset）的简称，是分布式内存的一个抽  象概念，提供了一种高度受限的共享内存模型；<br>  ● DAG：是Directed Acyclic Graph（有向无环图）的简称，反映RDD之间的依赖关系；<br>  ● Executor：是运行在工作节点（Worker Node）上的一个进程，负责运行任务，并为应用程序存储数据；<br>  ● 应用：用户编写的Spark应用程序；<br>  ● 任务：运行在Executor上的工作单元；<br>  ● 作业：一个作业包含多个RDD及作用于相应RDD上的各种操作；<br>  ● 阶段：是作业的基本调度单位，一个作业会分为多组任务，每组任务被称为“阶段”，或者也被      称为“任务集”。</p>
+<p>开启spark-shell<br>cd到spark主目录 运行  ./bin/spark-shell</p>
+<p>开启HDFS服务<br>cd  HADOOPPATH<br>./sbin/start-dfs.sh<br>./sbin/start-dfs.sh dfs -mkdir -p /user/hadoop  为当前登录用户创建目录<br>./bin/hdfs dfs -ls /user/hadoop  查看HDFS文件系统中的目录和文件<br>./bin/hdfs dfs hdfs下执行任何shell语句时前面都要加上前面这一条<br>RDDs支持两种类型的操作<br>  ● actions        在数据集上运行计算后返回值<br>  ● transformations        转换操作，从现有数据集创建一个新的数据集（Lazy，action触发）</p>
+<p>python脚本提交<br>./bin/spark-submit examples/src/main/python/pi.py</p>
+<p>上下文包括<br>  ● Spark context available as sc.（构建运行环境，由任务控制节点Driver创建）<br>  ● SQL context available as sqlContext.</p>
+<p>把应用程序打包成jar并运行<br>cd  work_PATH<br>mkdir  -p  src/main/scala<br>cd src/main/scala<br>vim app_NAME.scala  // 编写app源码<br>vim simple.sbt   //编写app版本信息 scala:2.10.5  spark-core:1.6.0<br>~/spark/sbt/sbt  package<br>find .   //查看目录是否符合要求<br>~/spark/sbt/sbt  package  //运行在work_PATH路径下<br>spark_PATH/bin/spark-submit  –class  “app_NAME”  /work_PATH/target/scala-2.10/**.jar</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spark/">spark</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-聚类算法-1" class="article article-type-post" itemscope itemprop="blogPost">
   
